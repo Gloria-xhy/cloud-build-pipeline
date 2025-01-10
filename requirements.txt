@@ -1,0 +1,6 @@
+apache-beam[gcp]==2.60.0
+google-cloud-bigquery==3.26.0
+google-cloud-core
+simplejson
+pytz
+pybase64

@@ -1,0 +1,33 @@
+{
+  "sdkInfo": {
+    "language": "PYTHON"
+  },
+  "metadata": {
+    "name": "xhy-job",
+    "description": "A sample Dataflow job",
+    "parameters": [
+      {
+        "name": "input_topic",
+        "label": "Input Pub/Sub Topic",
+        "helpText": "The Pub/Sub topic to read data from",
+        "paramType": "TEXT",
+        "isOptional": false
+      },
+      {
+        "name": "staging_location",
+        "label": "Staging Location",
+        "helpText": "The Cloud Storage path for staging files",
+        "paramType": "TEXT",
+        "isOptional": false
+      },
+      {
+        "name": "temp_location",
+        "label": "Temporary Location",
+        "helpText": "The Cloud Storage path for temporary files",
+        "paramType": "TEXT",
+        "isOptional": false
+      }
+    ]
+  },
+  "image": "gcr.io/qpon-1c174/xhy_image:latest"
+}
