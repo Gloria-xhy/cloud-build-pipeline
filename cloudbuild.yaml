@@ -11,7 +11,7 @@ steps:
            'gcr.io/qpon-1c174/xhy_image:lates']
 
   # Entrypoint, timeout and environment variables
-  # 创建 Dataflow Flex Template
+  # Dataflow Flex Template
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [
