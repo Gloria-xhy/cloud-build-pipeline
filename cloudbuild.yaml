@@ -1,0 +1,29 @@
+steps:
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'gcr.io/qpon-1c174/xhy_image:lates', 
+           '.']
+
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 
+           'gcr.io/qpon-1c174/xhy_image:lates']
+
+  # Entrypoint, timeout and environment variables
+  # 创建 Dataflow Flex Template
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: [
+      'dataflow', 'flex-template', 'build',
+      'gs://xhy_bucket/templates/xhy-job-template.json',  # 替换为您的 Cloud Storage 路径
+      '--image', 'gcr.io/qpon-1c174/xhy_image:latest',
+      '--sdk-language', 'PYTHON',
+      '--metadata', 'name=xhy-job,description=A sample Dataflow job'
+    ]
+
+timeout: 600s  # 超时时间可以根据需要调整      
+logsBucket: 'gs://xhy_bucket'
+
+# [END cloudbuild_basic_config]
+
